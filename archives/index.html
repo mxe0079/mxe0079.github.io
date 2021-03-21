@@ -12,7 +12,7 @@
     <meta name="keywords" content="TriDiamond Obsidian,"> 
     
     <meta name="author" content="Noah AO"> 
-    <link rel="alternative" href="atom.xml" title="Hexo" type="application/atom+xml"> 
+    <link rel="alternative" href="atom.xml" title="Journey" type="application/atom+xml"> 
     <link rel="icon" href="/img/favicon.png"> 
     
 <link rel="stylesheet" href="//at.alicdn.com/t/font_1429596_nzgqgvnmkjb.css">
@@ -48,7 +48,7 @@
             <div></div>
         </div>
     </div>
-    <span id="config-title" style="display:none">Hexo</span>
+    <span id="config-title" style="display:none">Journey</span>
     <div id="loader"></div>
     <div id="single" class="page">
     <div id="top">
@@ -60,7 +60,7 @@
                 <div class="content animated fadeIn">
                     <div class="set">
                         <h1 style="text-align: center">Archived</h1>
-                        <p style="text-align: center">「 2 」</p>
+                        <p style="text-align: center">「 1 」</p>
                         <ul class="timeline timeline-centered">
                             
                             
@@ -79,24 +79,25 @@
                                     </div>
                                     <div class="timeline-marker"></div>
                                     <div class="timeline-content">
-                                        <a class="timeline-title" target="_self" href="/2021/03/21/HELLO/">HELLO</a>
+                                        <a class="timeline-title" target="_self" href="/2021/03/21/Install/">Install</a>
                                         <p>
-                                            HELLO WORD
-                                        </p>
-                                    </div>
-                                </li>
-                            
-                                
-                                <li class="timeline-item">
-                                    <div class="timeline-info">
-                                        <span class="gradient-text">March 21, 2021</span>
-                                    </div>
-                                    <div class="timeline-marker"></div>
-                                    <div class="timeline-content">
-                                        <a class="timeline-title" target="_self" href="/2021/03/21/hello-world/">Hello World</a>
-                                        <p>
-                                            Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Qu...
+                                            kali基本工具的介绍以及安装过程
+
+
+硬盘安装
+下载安装镜像  kali官网
+验证 hash 值   ==&gt;  sha1sum
+制作启动光盘  ==&gt;  live
+制作工具  unetbootin
+
+
+设置BIOS启动顺序
+启动安装
+
+DOCKER
+虚拟化和Docker
+Kali Docker image
+https://www.kali.org/news/official-k...
                                         </p>
                                     </div>
                                 </li>
@@ -188,10 +189,6 @@ Qu...
 
 
  
-<link rel="stylesheet" href="//cdn.bootcss.com/gitalk/1.5.0/gitalk.min.css">
- 
-<script src="//cdn.bootcss.com/gitalk/1.5.0/gitalk.min.js"></script>
-  
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="/js/plugin.js"></script>
 <script src="/js/obsidian.js"></script>
@@ -307,7 +304,7 @@ Qu...
     var typedTextEl = $('.typed-text');
     if (typedTextEl && typedTextEl.length > 0) {
       var typed = new Typed('.typed-text', {
-        strings: ['Think like an artist, develop like an artisan', '艺术家思维去思考问题，工匠创造精神去开发'],
+        strings: ['You can create art and beauty on a computer', '你可以用计算机创造美和艺术'],
         typeSpeed: 90,
         loop: true,
         loopCount: Infinity,
@@ -323,6 +320,38 @@ Qu...
   }
 </script>
 
+ 
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+<script>
+  var valine = new Valine();
+
+  function initValine(path) {
+    if (!path) path = window.location.pathname;
+    let language = 'en';
+    if (!language) {
+      language = 'en';
+    } else {
+      language = language.toLowerCase();
+    }
+    valine.init({
+      el: '#vcomments',
+      appId: 'QHCOIEBlyjBUMAjaE5ilzafk-gzGzoHsz',
+      appKey: 'ggeGwz8ypB9uiAIYSRH5T0PF',
+      notify: 'false',
+      verify: 'false',
+      avatar: 'mp',
+      placeholder: 'Leave your throughs behind~',
+      visitor: 'true',
+      path: path,
+      lang: language,
+    });
+  }
+
+  $(document).ready(function () {
+    initValine();
+  });
+</script>
 
 
 
