@@ -60,7 +60,7 @@
                 <div class="content animated fadeIn">
                     <div class="set">
                         <h1 style="text-align: center">Archived</h1>
-                        <p style="text-align: center">「 4 」</p>
+                        <p style="text-align: center">「 1 」</p>
                         <ul class="timeline timeline-centered">
                             
                             
@@ -75,134 +75,19 @@
                                 
                                 <li class="timeline-item">
                                     <div class="timeline-info">
-                                        <span class="gradient-text">March 21, 2021</span>
+                                        <span class="gradient-text">March 22, 2021</span>
                                     </div>
                                     <div class="timeline-marker"></div>
                                     <div class="timeline-content">
-                                        <a class="timeline-title" target="_self" href="/2021/03/21/Install/">Install</a>
+                                        <a class="timeline-title" target="_self" href="/2021/03/22/%E7%BA%A2%E9%98%9F%E4%BE%A6%E5%AF%9F/">红队侦察</a>
                                         <p>
-                                            kali基本工具的介绍以及安装过程我我我我我我我我我我我我我
-
-
-
-
-硬盘安装
-下载安装镜像  kali官网
-验证 hash 值   ==&gt;  sha1sum
-制作启动光盘  ==&gt;  live
-制作工具  unetbootin
-
-
-设置BIOS启动顺序
-启动安装
-
-DOCKER
-虚拟化和Docker
-Kali Docker image
-https://www.kali.org/...
-                                        </p>
-                                    </div>
-                                </li>
-                            
-                                
-                                <li class="timeline-item">
-                                    <div class="timeline-info">
-                                        <span class="gradient-text">March 21, 2021</span>
-                                    </div>
-                                    <div class="timeline-marker"></div>
-                                    <div class="timeline-content">
-                                        <a class="timeline-title" target="_self" href="/2021/03/21/%E4%B8%BB%E5%8A%A8%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/">主动信息收集</a>
-                                        <p>
-                                            主动信息收集
-直接与目标系统交互通信
-无法避免留下访问的痕迹
-使用受控的第三方电脑进行探测
-使用代理或已经被控制的主机
-做好被封杀的准备
-使用噪声迷惑目标，淹没真实的探测流量
-
-
-扫描
-发送不同的探测，返回结果判断目标状态
-
-
-
-发现
-识别活着的主机（攻击目标）
-输出IP地址列表
-2、3、4 层发现
-
-二层发现
-优点：扫描速度快、可靠
-缺点：不可路由
-ARP协议
-抓包
-
-
-
-Arpingar...
-                                        </p>
-                                    </div>
-                                </li>
-                            
-                                
-                                <li class="timeline-item">
-                                    <div class="timeline-info">
-                                        <span class="gradient-text">March 21, 2021</span>
-                                    </div>
-                                    <div class="timeline-marker"></div>
-                                    <div class="timeline-content">
-                                        <a class="timeline-title" target="_self" href="/2021/03/21/kali%E4%BB%8B%E7%BB%8D/">介绍</a>
-                                        <p>
-                                            安全问题的根源
-分层思想的优劣  ==&gt;  每个行业对于整个系统没有完全的认知
-只追求功能实现
-安全问题的根源  ==&gt;  人
-
-安全目标
-先于攻击者发现和防止漏洞出现
-攻击型安全
-防护型安全
-
-
-
-渗透测试
-尝试突破安全防御机制
-从攻击者的角度思考，测试安全防护有效性
-证明安全问题的存在，而非破坏
-道德、法律约束
-
-渗透测试标准
-PETS（http://www.pentest-...
-                                        </p>
-                                    </div>
-                                </li>
-                            
-                                
-                                <li class="timeline-item">
-                                    <div class="timeline-info">
-                                        <span class="gradient-text">March 21, 2021</span>
-                                    </div>
-                                    <div class="timeline-marker"></div>
-                                    <div class="timeline-content">
-                                        <a class="timeline-title" target="_self" href="/2021/03/21/Metasploit-Framework/">MSF</a>
-                                        <p>
-                                            �ܹ�
-Rex
-
-�������ܿ⣬��������ճ��������������˹��ֶ�����ʵ��
-����socket���ӷ��ʡ�Э��Ӧ��http��SSL��SMB��
-����ת����XOR��Base64��Unicode��
-
-
-Msf::Core
-
-�ṩMsf�ĺ��Ļ���API����ܵĺ�������ʵ�ֿ�
-
-
-Msf::Base
-
-�ṩ�Ѻõ�API�...
+                                            环境探测扫描结果差异化分析对于所有客户机，可以设置不同的bash监视脚本。对于一般不大的客户机网络，可以设置简单的cronjob来执行外部端口差异化分析。
+下面为一个扫描脚本（需要替换端口）：
+#!/bin/bash
+if [ ! -e /opt/nmap_diff ]; then
+    mkdir /opt/nmap_diff
+fi
+d=$(date -d today +%Y-%m-%d...
                                         </p>
                                     </div>
                                 </li>
