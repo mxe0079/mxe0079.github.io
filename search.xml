@@ -4,23 +4,48 @@
   
     
     <entry>
-      <title>红队侦察</title>
-      <link href="2021/03/22/%E7%BA%A2%E9%98%9F%E4%BE%A6%E5%AF%9F/"/>
-      <url>2021/03/22/%E7%BA%A2%E9%98%9F%E4%BE%A6%E5%AF%9F/</url>
+      <title>Struts2-005漏洞分析</title>
+      <link href="2021/03/27/Struts2-005/"/>
+      <url>2021/03/27/Struts2-005/</url>
       
-        <content type="html"><![CDATA[<h1 id="环境探测"><a href="#环境探测" class="headerlink" title="环境探测"></a>环境探测</h1><h2 id="扫描结果差异化分析"><a href="#扫描结果差异化分析" class="headerlink" title="扫描结果差异化分析"></a>扫描结果差异化分析</h2><p>对于所有客户机，可以设置不同的bash监视脚本。对于一般不大的客户机网络，可以设置简单的cronjob来执行外部端口差异化分析。</p><p>下面为一个nmap扫描脚本（需要替换端口）：</p><pre><code class="shell">#!/bin/bashif [ ! -e /opt/nmap_diff ]; then    mkdir /opt/nmap_difffid=$(date -d today +%Y-%m-%d)y=$(date -d yesterday +%Y-%m-%d)/usr/bin/nmap -T4 -oX /opt/nmap_diff/scan_$d.xml 192.168.1.0/24 &gt; /dev/null 2&gt;&amp;1if [ -e /opt/nmap_diff/scan_$y.xml ]; then    /usr/bin/ndiff /opt/nmap_diff/scan_$y.xml /opt/nmap_diff/scan_$d.xml &gt; /opt/nmap_diff/diff.txtfi</code></pre><p><code>crontab -e</code> 开始创建任务，<code>crontab -l</code> 显示创建的任务</p><pre><code class="shell">0 7 * * * /usr/bin/bash /tmp/diff.sh    #每天早上7点执行diff.sh脚本</code></pre><p><a href="https://github.com/robertdavidgraham/masscan">Masscan</a> 适用于范围较大的网络环境，扫描速度快于nmap</p><p><strong>实验：网络diff扫描器</strong>：</p><ul><li>自己构建一个端口列表</li><li>实现 nmap banner</li><li>保持对端口的历史追踪</li><li>建立通知系统</li></ul><pre><code class="shell">#!/bin/shTARGETS=&quot;192.168.1.0/24&quot;OPTIONS=&quot;-v -T4 -sV&quot;# OPTIONS=&quot;-v -T4 -sV -p 22,80,8080,3389&quot;d=$(date +%Y-%m-%d)y=$(date +%Y-%m-%d)cd /opt/nmap_diffnmap $OPTIONS $TARGETS -oX scan_$d.xml &gt; /dev/nullif [ -e /opt/nmap_diff/scan_$y.xml ]; then    ndiff scan_$y.xml scan_$d.xml &gt; diff.txt    curl -F &quot;file=@diff.txt;filename=diff_$d.txt&quot; https://slack.com/api/files.uploadfi</code></pre><h2 id="Web应用程序监控"><a href="#Web应用程序监控" class="headerlink" title="Web应用程序监控"></a>Web应用程序监控</h2><p><a href="https://github.com/breenmachine/httpscreenshot">HTTPScreenshtot</a> 使用Masscan快速扫描大型网络，并使用 phantomjs 捕捉网站截屏</p>]]></content>
+        <content type="html"><![CDATA[<h1 id="0x00-原理"><a href="#0x00-原理" class="headerlink" title="0x00 原理"></a>0x00 原理</h1>]]></content>
       
       
       <categories>
           
-          <category> The Hacker Playbook </category>
+          <category> 红队 </category>
+          
+          <category> Web入口 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> 红队 </tag>
+            <tag> Structs2 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>信息收集.md</title>
+      <link href="2021/03/27/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86-md/"/>
+      <url>2021/03/27/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86-md/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      <categories>
+          
+          <category> 红队 </category>
+          
+      </categories>
+      
+      
+        <tags>
             
             <tag> 信息收集 </tag>
             

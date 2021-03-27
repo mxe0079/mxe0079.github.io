@@ -5,13 +5,12 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>红队侦察 - Journey</title>
+    <title>信息收集.md - Journey</title>
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="google" content="notranslate" />
     <meta name="keywords" content="TriDiamond Obsidian,"> 
-    <meta name="description" content="环境探测扫描结果差异化分析对于所有客户机，可以设置不同的bash监视脚本。对于一般不大的客户机网络，可以设置简单的cronjob来执行外部端口差异化分析。
-下面为一个nmap扫描脚本（需要替换端口）,"> 
+    
     <meta name="author" content="Noah AO"> 
     <link rel="alternative" href="atom.xml" title="Journey" type="application/atom+xml"> 
     <link rel="icon" href="/img/favicon.png"> 
@@ -58,7 +57,7 @@
     <div class="navigation animated fadeIn fast delay-1s">
         <img id="home-icon" class="icon-home" src="/img/favicon.png" alt="" data-url="http://mxe0079.github.io">
         <div id="play-icon" title="Play/Pause" class="iconfont icon-play"></div>
-        <h3 class="subtitle">红队侦察</h3>
+        <h3 class="subtitle">信息收集.md</h3>
         <div class="social">
             <!--        <div class="like-icon">-->
             <!--            <a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
@@ -88,29 +87,29 @@
         <div class="else">
             <p class="animated fadeInDown">
                 
-                <a href="/categories/The Hacker Playbook"><b>「
-                    </b>THE HACKER PLAYBOOK<b> 」</b></a>
+                <a href="/categories/红队"><b>「
+                    </b>红队<b> 」</b></a>
                 
-                March 22, 2021
+                March 27, 2021
             </p>
-            <h3 class="post-title animated fadeInDown"><a href="/2021/03/22/%E7%BA%A2%E9%98%9F%E4%BE%A6%E5%AF%9F/" title="红队侦察" class="">红队侦察</a>
+            <h3 class="post-title animated fadeInDown"><a href="/2021/03/27/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86-md/" title="信息收集.md" class="">信息收集.md</a>
             </h3>
             
             <p class="post-count animated fadeInDown">
                 
                 <span>
                     <b class="iconfont icon-text2"></b> <i>Words count</i>
-                    1.8k
+                    0
                 </span>
                 
                 
                 <span>
                     <b class="iconfont icon-timer__s"></b> <i>Reading time</i>
-                    2 mins.
+                    1 mins.
                 </span>
                 
                 
-                <span id="/2021/03/22/红队侦察/" class="leancloud_visitors" data-flag-title="红队侦察">
+                <span id="/2021/03/27/信息收集-md/" class="leancloud_visitors" data-flag-title="信息收集.md">
                     <b class="iconfont icon-read"></b> <i>Read count</i>
                     <span class="leancloud-visitors-count">1000000</span>
                 </span>
@@ -119,7 +118,7 @@
             </p>
             
             
-            <ul class="animated fadeInDown post-tags-list" itemprop="keywords"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/" rel="tag">信息收集</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/%E7%BA%A2%E9%98%9F/" rel="tag">红队</a></li></ul>
+            <ul class="animated fadeInDown post-tags-list" itemprop="keywords"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/" rel="tag">信息收集</a></li></ul>
             
         </div>
     </div>
@@ -140,45 +139,7 @@
 <div class="article">
     <div class='main'>
         <div class="content markdown animated fadeIn">
-            <h1 id="环境探测"><a href="#环境探测" class="headerlink" title="环境探测"></a>环境探测</h1><h2 id="扫描结果差异化分析"><a href="#扫描结果差异化分析" class="headerlink" title="扫描结果差异化分析"></a>扫描结果差异化分析</h2><p>对于所有客户机，可以设置不同的bash监视脚本。对于一般不大的客户机网络，可以设置简单的cronjob来执行外部端口差异化分析。</p>
-<p>下面为一个nmap扫描脚本（需要替换端口）：</p>
-<pre><code class="shell">#!/bin/bash
-if [ ! -e /opt/nmap_diff ]; then
-    mkdir /opt/nmap_diff
-fi
-d=$(date -d today +%Y-%m-%d)
-y=$(date -d yesterday +%Y-%m-%d)
-/usr/bin/nmap -T4 -oX /opt/nmap_diff/scan_$d.xml 192.168.1.0/24 &gt; /dev/null 2&gt;&amp;1
-if [ -e /opt/nmap_diff/scan_$y.xml ]; then
-    /usr/bin/ndiff /opt/nmap_diff/scan_$y.xml /opt/nmap_diff/scan_$d.xml &gt; /opt/nmap_diff/diff.txt
-fi
-</code></pre>
-<p><code>crontab -e</code> 开始创建任务，<code>crontab -l</code> 显示创建的任务</p>
-<pre><code class="shell">0 7 * * * /usr/bin/bash /tmp/diff.sh    #每天早上7点执行diff.sh脚本
-</code></pre>
-<p><a target="_blank" rel="noopener" href="https://github.com/robertdavidgraham/masscan">Masscan</a> 适用于范围较大的网络环境，扫描速度快于nmap</p>
-<p><strong>实验：网络diff扫描器</strong>：</p>
-<ul>
-<li>自己构建一个端口列表</li>
-<li>实现 nmap banner</li>
-<li>保持对端口的历史追踪</li>
-<li>建立通知系统</li>
-</ul>
-<pre><code class="shell">#!/bin/sh
-TARGETS=&quot;192.168.1.0/24&quot;
-OPTIONS=&quot;-v -T4 -sV&quot;
-# OPTIONS=&quot;-v -T4 -sV -p 22,80,8080,3389&quot;
-d=$(date +%Y-%m-%d)
-y=$(date +%Y-%m-%d)
-cd /opt/nmap_diff
-nmap $OPTIONS $TARGETS -oX scan_$d.xml &gt; /dev/null
-if [ -e /opt/nmap_diff/scan_$y.xml ]; then
-    ndiff scan_$y.xml scan_$d.xml &gt; diff.txt
-    curl -F &quot;file=@diff.txt;filename=diff_$d.txt&quot; https://slack.com/api/files.upload
-fi
-</code></pre>
-<h2 id="Web应用程序监控"><a href="#Web应用程序监控" class="headerlink" title="Web应用程序监控"></a>Web应用程序监控</h2><p><a target="_blank" rel="noopener" href="https://github.com/breenmachine/httpscreenshot">HTTPScreenshtot</a> 使用Masscan快速扫描大型网络，并使用 phantomjs 捕捉网站截屏</p>
-
+            
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
             <audio id="audio" loop="1" preload="auto" controls="controls"
                 data-autoplay="true">
@@ -221,6 +182,10 @@ fi
             <div class="post-nav">
                 <hr>
                 
+                    <div class="post-nav-item">Previous Post:<a href="/2021/03/27/Struts2-005/" rel="prev" 
+                        title="Struts2-005漏洞分析">Struts2-005漏洞分析
+                      </a></div>
+                
                                 
             </div>   
                         
@@ -245,20 +210,13 @@ fi
                     </dl>
                 </div>
                 <ul>
-                    <li><a href="/">1 <p>Articles</p></a></li>
-                    <li><a href="/categories">1 <p>Categories</p></a></li>
+                    <li><a href="/">2 <p>Articles</p></a></li>
+                    <li><a href="/categories">2 <p>Categories</p></a></li>
                     <li><a href="/tags">2 <p>Tags</p></a></li>
                 </ul>
             </div>
             
             
-            
-            <div class="box sticky animated fadeInRight faster">
-                <div id="toc" class="subbox">
-                    <h4>Contents</h4>
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83%E6%8E%A2%E6%B5%8B"><span class="toc-number">1.</span> <span class="toc-text">环境探测</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%AB%E6%8F%8F%E7%BB%93%E6%9E%9C%E5%B7%AE%E5%BC%82%E5%8C%96%E5%88%86%E6%9E%90"><span class="toc-number">1.1.</span> <span class="toc-text">扫描结果差异化分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Web%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%E7%9B%91%E6%8E%A7"><span class="toc-number">1.2.</span> <span class="toc-text">Web应用程序监控</span></a></li></ol></li></ol>
-                </div>
-            </div>
             
             
         </div>
