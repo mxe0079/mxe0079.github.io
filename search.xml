@@ -32,8 +32,8 @@
     
     <entry>
       <title>信息收集.md</title>
-      <link href="2021/03/27/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86-md/"/>
-      <url>2021/03/27/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86-md/</url>
+      <link href="2021/03/27/Information-gathering/"/>
+      <url>2021/03/27/Information-gathering/</url>
       
         <content type="html"><![CDATA[<p><strong>0x00绕CDN找出目标所有真实ip段</strong></p><ul><li><a href="https://www.cnblogs.com/qiudabai/p/9763739.html">https://www.cnblogs.com/qiudabai/p/9763739.html</a></li><li>查找目标历史DNS解析记录与查询子域名</li></ul><p><strong>0x01找目标的各种Web管理后台登录口</strong></p><ul><li><a href="https://cloud.tencent.com/developer/article/1480555">https://cloud.tencent.com/developer/article/1480555</a></li><li>常见后台页面：admin、admin/login、manage、system</li><li>后台管理页面爬取：burpsuite、AWVS、AppScan</li></ul><p><strong>0x02批量抓取目标所有真实C段</strong></p><ul><li>通过绕过CDN找到目标真实IP后扫描不同C段，或者通过子域名IP解析寻找C段</li></ul><p><strong>0x03进行基础服务端口扫描探测识别</strong></p><ul><li>nmap</li></ul><p>**0x04尝试目标DNS是否允许区域传送,如果不允许则尝试子域爆破 **</p><ul><li><a href="https://blog.csdn.net/song_lee/article/details/105762479">https://blog.csdn.net/song_lee/article/details/105762479</a></li></ul><p><strong>0x05 其他</strong></p><p>批量识别目标所有存活Web站点的Web程序指纹及其详细版本 </p><p>从 Git 中查找目标泄露的各类敏感文件 及 账号密码 </p><p>偶尔甚至还能碰到目标不小心泄露的各种云的 “AccessKey”从网盘 / 百度文库 中查找目标泄露的各类 敏感文件 及 账号密码 </p><p>从各第三方历史漏洞库中查找目标曾经泄露的 各种敏感账号密码 [ 国内目标很好使 ] </p><p>目标Svn里泄露的各类 敏感文件网站目录扫描 [ 查找目标网站泄露的各类敏感文件, 网站备份文件, 敏感配置文件, 源码 , 别人的webshell, 等等等…] </p><p>目标站点自身在前端代码中泄露的各种敏感信息fofa / shodan / bing / google  hacking 深度利用搜集目标 学生学号 / 员工工号 / 目标邮箱 [ 并顺手到各个社工库中去批量查询这些邮箱曾经是否泄露过密码 ] </p><p>目标自己对外提供的各种 技术文档 / wiki 里泄露的各种账号密码及其它敏感信息 </p><p>目标微信小程序分析目标app Web请求借助js探针搜集目标内网信息 </p><p>想办法混入目标的各种 内部QQ群 / 微信群分析目标直接供应商 [尤其是技术外包] </p><p>根据前面已搜集到的各类信息制作有针对性的弱口令字典 </p><p>目标所用 Waf 种类识别 与 绕过BypassWAF  </p><p>文件上传 / 读取 / 下载    </p><p>BypassWAF  </p><p>Sql注入    </p><p>BypassWAF RCE    </p><p>BypassWAF  </p><p>各类Java Web中间件 </p><p>已知Nday漏洞利用    </p><p>BypassWAF Webshell  </p><p>免杀</p>]]></content>
       
